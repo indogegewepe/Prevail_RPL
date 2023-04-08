@@ -22,6 +22,7 @@
   --label-color: #4da3ff;
   --title-icon-color: #fff;
   --input-color: #ffff;
+  --table-color : #0c0c0c;
 
   /* ====== Transition ====== */
   --tran-05: all 0.5s ease;
@@ -47,6 +48,7 @@ body.dark {
   --label-color: #11e6db;
   --title-icon-color: #ccc;
   --input-color: #686868;
+  --table-color : #1dbd9a;
 }
 /* === Custom Scroll Bar CSS === */
 ::-webkit-scrollbar {
@@ -288,11 +290,11 @@ nav.close ~ .dashboard .top {
   border-radius: 50%;
 }
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: bold;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: bold;
+}
 .dashboard .dash-content {
   padding-top: 50px;
 }
@@ -580,7 +582,7 @@ select {
 #upload_dokumen {
   justify-content: center;
   align-items: center;
-  border: 0px; 
+  border: 0px;
   outline: none;
 }
 .input-field input[type="date"]:valid {
@@ -642,4 +644,42 @@ form .buttons button,
   form .fields .input-field {
     width: 100%;
   }
+}
+
+.table-responsive table {
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.table-responsive table th {
+  background-color: var(--label-color);
+  color: var(--panel-color);
+  text-align: center;
+}
+
+.col-md-7 {
+  background-color: rgba(202, 198, 198, 0.144);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px 10px 10px 10px;
+}
+.col-md-4 {
+  background-color: rgba(202, 198, 198, 0.144);
+  border-radius: 10px;
+  margin: 10px;
+  padding: 20px 5px 10px 5px;
+}
+
+.col-md-4 header{
+  color: var(--text-color);
+}
+.col-md-4 table label{
+  text-align: left;
+  color: var(--text-color);
+}
+.col-md-4 table #cekb{
+  width: 30%;
+  text-align: center;
 }
