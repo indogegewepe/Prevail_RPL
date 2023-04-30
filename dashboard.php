@@ -81,9 +81,9 @@ require_once "ReadDataAPI.php";
 
       <ul class="logout-mode">
         <li>
-          <a href="#">
+          <a href="logout.php">
             <i class="uil uil-signout"></i>
-            <span class="link-name">Logout</span>
+            <span class="link-name">Logout <?= $_SESSION['user'] ?></span>
           </a>
         </li>
 
@@ -119,15 +119,17 @@ require_once "ReadDataAPI.php";
           <i class="uil uil-tachometer-fast-alt"></i>
           <span class="text">Layanan</span>
         </div>
-        <?php foreach ($data1 as $row) : ?>
-          <div class="boxes">
-            <div class="box box1">
-              <i class="fa fa-newspaper"></i>
-              <a href="#"><span class="text"><?= $row['namaLayanan'] ?></span></a>
-              <span class="text2">Rp. <?= $row['harga'] ?> / <?= $row['minPembelian'] ?> pcs</span>
+        <div class="d-flex">
+          <?php foreach ($data1 as $row) : ?>
+            <div class="boxes">
+              <div class="box box1">
+                <i class="fa fa-newspaper"></i>
+                <a href="#"><span class="text"><?= $row['namaLayanan'] ?></span></a>
+                <span class="text2">Rp. <?= $row['harga'] ?> / <?= $row['minPembelian'] ?> pcs</span>
+              </div>
             </div>
-          </div>
-        <?php endforeach; ?>
+          <?php endforeach; ?>
+        </div>
 
         <!-- <div class="box box2">
               <i class="fa fa-calendar-check"></i>
