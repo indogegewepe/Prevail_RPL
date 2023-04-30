@@ -22,8 +22,6 @@ if (isset($_POST['submit'])) {
     //     echo "email sudah terdaftar";
     // }
 
-    }
-
     // tambahkan data baru ke array
     $new_data = array(
         'email' => $email,
@@ -36,7 +34,8 @@ if (isset($_POST['submit'])) {
 
     // ubah array menjadi JSON dan simpan ke file
     file_put_contents($data3, json_encode($data));
-
+    
+}
     require_once "view/header.php";
 
 ?>
