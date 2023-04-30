@@ -1,28 +1,44 @@
 <?php
 require_once "core/init.php";
 
+
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    if (register_cek_email($email)) {
-        if (!empty(trim($name)) && !empty(trim($password)) && !empty(trim($email)) && !empty(trim($username))) {
-            if (register_user($name, $email, $username, $password)) {
-                echo "Successfully registered";
-            } else {
-                echo "Something went wrong";
-            }
-        } else {
-            echo "Sorry it can't be empty";
-        }
-    } else {
-        echo "email sudah terdaftar";
-    }
-}
+    // if (register_cek_email($email)) {
+    //     if (!empty(trim($name)) && !empty(trim($password)) && !empty(trim($email)) && !empty(trim($username))) {
+    //         if (register_user($name, $email, $username, $password)) {
+    //             echo "Successfully registered";
+    //         } else {
+    //             echo "Something went wrong";
+    //         }
+    //     } else {
+    //         echo "Sorry it can't be empty";
+    //     }
+    // } else {
+    //     echo "email sudah terdaftar";
+    // }
 
-require_once "view/header.php";
+    }
+
+    // tambahkan data baru ke array
+    $new_data = array(
+        'email' => $email,
+        'nama' => $name,
+        'password' => $password,
+        'username' => $username
+    );
+
+    $data[] = $new_data;
+
+    // ubah array menjadi JSON dan simpan ke file
+    file_put_contents($data3, json_encode($data));
+
+    require_once "view/header.php";
+
 ?>
 
 
