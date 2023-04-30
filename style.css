@@ -333,7 +333,6 @@ header {
   border-radius: 10px;
   width: calc(75% / 3 - 15px);
   padding: 15px 10px;
-  background-color: var(--box1-color);
   transition: var(--tran-05);
   margin-bottom: 20px;
 }
