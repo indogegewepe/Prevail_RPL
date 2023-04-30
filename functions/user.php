@@ -18,42 +18,53 @@ function register_user($name, $email, $username, $password)
     }
 };
 
-function register_cek_email($email)
-{
-    global $conn;
-    $email = mysqli_real_escape_string($conn, $email);
+// function register_cek_email($email)
+// {
+//     global $conn;
+//     $email = mysqli_real_escape_string($conn, $email);
 
-    $query = "SELECT * FROM customer WHERE email = '$email'";
+//     $query = "SELECT * FROM customer WHERE email = '$email'";
 
-    if ( $result = mysqli_query($conn, $query) ){
-        if (mysqli_num_rows($result) == 0) return true;
-        else return false;
-    }
-};
+//     if ( $result = mysqli_query($conn, $query) ){
+//         if (mysqli_num_rows($result) == 0) return true;
+//         else return false;
+//     }
+// };
 
 function cek_data($username, $password){
-    global $conn;
-    $username = mysqli_real_escape_string($conn, $username);
-    $password = mysqli_real_escape_string($conn, $password);
+    // global $conn;
+    // $username = mysqli_real_escape_string($conn, $username);
+    // $password = mysqli_real_escape_string($conn, $password);
 
-    $query = "SELECT password FROM customer WHERE username = '$username'";
+    // $query = "SELECT password FROM customer WHERE username = '$username'";
 
-    $result = mysqli_query($conn, $query);
-    $hash = mysqli_fetch_assoc($result)['password'];
+    // $result = mysqli_query($conn, $query);
+    // $hash = mysqli_fetch_assoc($result)['password'];
 
-    if (password_verify($password, $hash)){
-        $_SESSION['user'] = $username;
-        header('Location: dashboard.php');
-    }else{
-        die("Password verification failed");
-    }
+    // if (password_verify($password, $hash)){
+    //     $_SESSION['user'] = $username;
+    //     header('Location: dashboard.php');
+    // }else{
+    //     die("Password verification failed");
+    // }
+    
+    // $query = "SELECT * FROM customer WHERE username = '$username'";
+    
+    // if ( $result = mysqli_query($conn, $query) ){
+        //     if (mysqli_num_rows($result) == 0) return true;
+        //     else return false;
+        // }
+    
+    require_once "ReadDataAPI.php";
 
-    $query = "SELECT * FROM customer WHERE username = '$username'";
-
-    if ( $result = mysqli_query($conn, $query) ){
-        if (mysqli_num_rows($result) == 0) return true;
-        else return false;
-    }
+    foreach($data3 as $row):
+        if ( $row["username"] == $username && $row["password"] == $password){
+            $_SESSION['user'] = $username;
+            return header('Location: dashboard.php');
+        }else{
+            return header('Location: index.php');
+        }
+    endforeach;
 }
 
 function login_cek_email($username){
