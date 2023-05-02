@@ -9,42 +9,32 @@ if (!isset($_SESSION['user'])) {
 
 ?>
 
-  <section class="dashboard">
-    <div class="top">
-      <i class="uil uil-bars sidebar-toggle"></i>
+<section class="dashboard">
 
-      <div class="search-box">
-        <i class="uil uil-search"></i>
-        <input type="text" placeholder="Search here..." />
+  <div class="dash-content">
+    <div class="overview">
+      <div class="title">
+        <i class="uil uil-tachometer-fast-alt"></i>
+        <span class="text">Layanan</span>
       </div>
 
-      <img src="images/profile.jpg" alt="" />
-    </div>
+      <div class="row boxes m-2">
+        <?php foreach ($data1 as $row) :
+          $color = dechex(rand(0xDDDDDD, 0xFFFFFF));
+        ?>
+          <div class="box box1 card col-sm-6" style="background-color: #<?php echo $color; ?>;">
+            <div class="card-body">
+              <center>
+                <i class="fa fa-newspaper"></i>
+                <a href="#"><span class="text card-title"><?= $row['namaLayanan'] ?></span></a>
+                <span class="text2 card-text">Rp. <?= $row['harga'] ?> / <?= $row['minPembelian'] ?> pcs</span>
+              </center>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      </div>
 
-    <div class="dash-content">
-      <div class="overview">
-        <div class="title">
-          <i class="uil uil-tachometer-fast-alt"></i>
-          <span class="text">Layanan</span>
-        </div>
-
-        <div class="row boxes m-2">
-          <?php foreach ($data1 as $row) :
-            $color = dechex(rand(0xDDDDDD, 0xFFFFFF));
-          ?>
-              <div class="box box1 card col-sm-6" style="background-color: #<?php echo $color; ?>;">
-                <div class="card-body">
-                  <center>
-                  <i class="fa fa-newspaper"></i>
-                  <a href="#"><span class="text card-title"><?= $row['namaLayanan'] ?></span></a>
-                  <span class="text2 card-text">Rp. <?= $row['harga'] ?> / <?= $row['minPembelian'] ?> pcs</span>
-                </center>
-                </div>
-              </div>
-          <?php endforeach; ?>
-        </div>
-
-        <!-- <div class="box box2">
+      <!-- <div class="box box2">
               <i class="fa fa-calendar-check"></i>
               <a href="#"> <span class="text">Kalender</span></a>
               <span class="text2">Rp.30.000/50pcs</span>
@@ -74,9 +64,9 @@ if (!isset($_SESSION['user'])) {
               <a href="#"><span class="text">Amplop Surat</span></a>
               <span class="text2">Rp.30.000/50pcs</span>
             </div> -->
-      </div>
+    </div>
 
-      <!-- <div class="activity">
+    <!-- <div class="activity">
           <div class="title">
             <i class="uil uil-clock-three"></i>
             <span class="text">Recent Activity</span>
@@ -136,9 +126,11 @@ if (!isset($_SESSION['user'])) {
           </div>
         </div>
       </div> -->
-  </section>
+</section>
 
-  <script src="view/js/script.js"></script>
+<script src="view/js/script.js"></script>
 </body>
-
+<?php
+// require_once "view/footer.php";
+?>
 </html>
