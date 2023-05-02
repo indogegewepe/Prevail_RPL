@@ -288,11 +288,11 @@ nav.close ~ .dashboard .top {
   border-radius: 50%;
 }
 header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: bold;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: bold;
+}
 .dashboard .dash-content {
   padding-top: 50px;
 }
@@ -579,7 +579,7 @@ select {
 #upload_dokumen {
   justify-content: center;
   align-items: center;
-  border: 0px; 
+  border: 0px;
   outline: none;
 }
 .input-field input[type="date"]:valid {
@@ -641,4 +641,12 @@ form .buttons button,
   form .fields .input-field {
     width: 100%;
   }
+}
+
+section div .status {
+  background-color: green;
+  color: azure;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
 }

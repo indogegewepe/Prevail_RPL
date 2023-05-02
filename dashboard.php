@@ -48,7 +48,7 @@ require_once "ReadDataAPI.php";
           </a>
         </li>
         <li>
-          <a href="order.html">
+          <a href="order.php">
             <i class="uil uil-files-landscapes"></i>
             <span class="link-name">Order</span>
           </a>

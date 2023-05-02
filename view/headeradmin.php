@@ -41,7 +41,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="status.php">
                         <i class="uil uil-chart"></i>
                         <span class="link-name">Status</span>
                     </a>
