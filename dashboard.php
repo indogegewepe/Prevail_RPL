@@ -7,7 +7,6 @@ if (!isset($_SESSION['user'])) {
 
 require_once "view/headeradmin.php";
 
-require_once "ReadDataAPI.php";
 ?>
 
 <!DOCTYPE html>

@@ -1,8 +1,8 @@
 <?php
 require_once "core/init.php";
 
-
 if (isset($_POST['submit'])) {
+    $db = new firebaseRDB($databaseURL);
     $name = $_POST['name'];
     $email = $_POST['email'];
     $username = $_POST['username'];
@@ -22,24 +22,18 @@ if (isset($_POST['submit'])) {
     //     echo "email sudah terdaftar";
     // }
 
-    // tambahkan data baru ke array
-    $new_data = array(
+    $insert = $db->insert("customer", [
         'email' => $email,
         'nama' => $name,
         'password' => $password,
         'username' => $username
-    );
+    ]);
 
-    $data[] = $new_data;
-
-    // ubah array menjadi JSON dan simpan ke file
-    file_put_contents($data3, json_encode($data));
-    
+    echo "Data berhasil ditambahkan";
 }
     require_once "view/header.php";
 
 ?>
-
 
         <div class="col" id="daftarcard">
             <form action="register.php" method="post">

@@ -1,5 +1,7 @@
 <?php
 
+require_once "/opt/lampp/htdocs/mine/core/init.php";
+
 function register_user($name, $email, $username, $password)
 {
     global $conn;
@@ -47,22 +49,19 @@ function cek_data($username, $password){
     // }else{
     //     die("Password verification failed");
     // }
-    
+
     // $query = "SELECT * FROM customer WHERE username = '$username'";
-    
+
     // if ( $result = mysqli_query($conn, $query) ){
-        //     if (mysqli_num_rows($result) == 0) return true;
-        //     else return false;
-        // }
-    
-    require_once "ReadDataAPI.php";
+    //     if (mysqli_num_rows($result) == 0) return true;
+    //     else return false;
+    // }
+    global $data3;
 
     foreach($data3 as $row):
         if ( $row["username"] == $username && $row["password"] == $password){
             $_SESSION['user'] = $username;
             return header('Location: dashboard.php');
-        }else{
-            return header('Location: index.php');
         }
     endforeach;
 }
