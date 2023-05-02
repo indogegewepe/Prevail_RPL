@@ -6,11 +6,6 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
 
     if (!empty(trim($password)) && !empty(trim($username))) {
-        // if (login_cek_email($username)) {
-        //     cek_data($username, $password);
-        // } else {
-        //     echo "Email belum terdaftar";
-        // }
         cek_data($username, $password);
     } else {
         echo "Sorry it can't be empty";
