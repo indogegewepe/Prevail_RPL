@@ -3,7 +3,6 @@ require_once "core/init.php";
 
 require_once "view/header.php";
 
-require_once "ReadDataAPI.php";
 
 $i = 0;
 
