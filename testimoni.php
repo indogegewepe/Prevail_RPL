@@ -3,7 +3,6 @@ require_once "core/init.php";
 
 require_once "view/header.php";
 
-
 $i = 0;
 
 ?>
