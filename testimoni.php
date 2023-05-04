@@ -3,7 +3,6 @@ require_once "core/init.php";
 
 require_once "view/header.php";
 
-
 $i = 0;
 
 ?>
@@ -11,6 +10,9 @@ $i = 0;
 <div class="col mt-3" id="testimonial">
     <div class="row">
         <div class="testimonial">
+            <?php $data2 = array_reverse($data2); 
+            foreach ($data2 as $row) :
+                    if ($i < 3) { ?>
             <?php foreach ($data2 as $row) : ?>
                 <?php if ($i < 3) { ?>
                     <div class="card my-4">
@@ -26,6 +28,8 @@ $i = 0;
                         </div>
                     </div>
                 <?php $i++;
+                } 
+            endforeach; ?>
                 } ?>
             <?php endforeach; ?>
         </div>
