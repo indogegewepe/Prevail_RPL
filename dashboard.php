@@ -42,4 +42,7 @@ if (!isset($_SESSION['user'])) {
 <?php
 // require_once "view/footer.php";
 ?>
+
+  <script src="view/js/script.js"></script>
+</body>
 </html>
