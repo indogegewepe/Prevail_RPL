@@ -7,6 +7,10 @@ if (!isset($_SESSION['user'])) {
   header('Location: login.php');
 }
 
+$db = new firebaseRDB($databaseURL);
+$data = $db->retrieve("layanan");
+$data = json_decode($data, 1);
+
 ?>
 
 <section class="dashboard">
@@ -19,19 +23,21 @@ if (!isset($_SESSION['user'])) {
       </div>
 
       <div class="row boxes m-2">
-        <?php foreach ($data1 as $row) :
-          $color = dechex(rand(0xDDDDDD, 0xFFFFFF));
+        <?php if(is_array($data)){
+                foreach($data as $id => $layanan):
+                  $color = dechex(rand(0xDDDDDD, 0xFFFFFF));
         ?>
-          <div class="box box1 card col-sm-6" style="background-color: #<?php echo $color; ?>;">
-            <div class="card-body">
-              <center>
-                <i class="fa fa-newspaper"></i>
-                <a href="#"><span class="text card-title"><?= $row['namaLayanan'] ?></span></a>
-                <span class="text2 card-text">Rp. <?= $row['harga'] ?> / <?= $row['minPembelian'] ?> pcs</span>
-              </center>
-            </div>
-          </div>
-        <?php endforeach; ?>
+                  <div class="box box1 card col-sm-6" style="background-color: #<?php echo $color; ?>;">
+                    <div class="card-body">
+                      <center>
+                        <i class="fa fa-newspaper"></i>
+                        <a href="#"><span class="text card-title"><?= $layanan['namaLayanan'] ?></span></a>
+                        <span class="text2 card-text">Rp. <?= $layanan['harga'] ?> / <?= $layanan['minPembelian'] ?> pcs</span>
+                      </center>
+                    </div>
+                  </div>
+                <?php endforeach; 
+              }?>
       </div>
     </div>
   </div>
