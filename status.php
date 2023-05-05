@@ -8,9 +8,9 @@ require_once "view/headeradmin.php";
         <section class="dashboard">
             <div class="dash-content">
                 <header style="font-size: 26px; font-weight: bold; color: blueviolet; ">Status Pemesanan</header>
-                <table class="table table-hover w-50 m-auto mt-5">
+                <table class="table table-bordered table-hover w-50 m-auto mt-5">
                     <thead>
-                        <tr class="table table-light">
+                        <tr class="table-warning table-bordered">
                             <th scope="col">Jenis Barang</th>
                             <th scope="col">Harga</th>
                             <th scope="col">Metode Pembayaran</th>
