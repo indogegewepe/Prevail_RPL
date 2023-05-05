@@ -32,6 +32,25 @@ $data = json_decode($data, 1);
                     }   
                 }
             }?>
+            <?php foreach ($data2 as $row) : ?>
+                <?php if ($i < 3) { ?>
+                    <div class="card my-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title-b"> <?= $row["nama"]  ?></h5>
+                                    <p class="card-text">
+                                        <?= $row["kalimat"] ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php $i++;
+                } 
+            endforeach; ?>
+                } ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

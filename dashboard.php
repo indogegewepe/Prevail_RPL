@@ -48,4 +48,7 @@ $data = json_decode($data, 1);
 <?php
 // require_once "view/footer.php";
 ?>
+
+  <script src="view/js/script.js"></script>
+</body>
 </html>
