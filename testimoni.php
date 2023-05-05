@@ -49,8 +49,6 @@ $data = json_decode($data, 1);
                 <?php $i++;
                 } 
             endforeach; ?>
-                } ?>
-            <?php endforeach; ?>
         </div>
     </div>
 </div>
