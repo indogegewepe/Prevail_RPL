@@ -18,8 +18,6 @@ if (isset($_POST['submit'])) {
     'nama' => $nama,
     'timestamp' => date_format($date, "H:i:s, d-m-Y")
   ]);
-
-  echo "Pesanan masuk ke keranjang";
 }
 
 ?>
@@ -48,11 +46,16 @@ if (isset($_POST['submit'])) {
             </div>
 
             <div class="input-field" id="khas">
-              <label for="upload_dokumen" class="form-label">Upload Dokumen</label>
-              <input onchange="uploadImage()" type="file" class="upload" id="photo" name="uploadDokumen" required />
+              <div class="mb-3">
+                <input type="file" id="photo formFile" class="form-control upload" onchange="uploadImage()" accept="image/jpeg, image/png" name="uploadDokumen" required>
+                <progress id="progressBar" value="0" max="100" class="progress-bar progress-bar-striped progress-bar-animated"></progress>
+                <h3 id="status"></h3>
+                <p id="loaded_n_total"></p>
+              </div>
             </div>
           </div>
         </div>
+
 
         <!-- Button trigger modal -->
         <div class="form-group input-group mb-3" id="login-btn">
@@ -140,20 +143,40 @@ if (isset($_POST['submit'])) {
   function uploadImage() {
     const ref = firebase.storage().ref("dokumen_pelanggan/");
     const file = document.querySelector("#photo").files[0];
-    const name = +file.name;
+    const name = file.name;
     const metadata = {
-      contentType: file.type
+      contentType: "image/jpeg"
     };
     const task = ref.child(name).put(file, metadata);
     task
-      .then(snapshot => snapshot.ref.getDownloadURL())
-      .then(url => {
-        console.log(url);
-        alert('image uploaded successfully');
-        document.querySelector("#image").src = url;
-      })
-      .catch(console.error);
+      .then(function(snapshot) {
+        document.getElementById("loaded_n_total").innerHTML = "";
+        document.getElementById("status").innerHTML = "Uploaded";
+        var url = snapshot.ref.getDownloadURL();
+      });
+
+    task.on('state_changed', function(snapshot) {
+      // Observe state change events such as progress, pause, and resume
+      // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+      var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+      document.getElementById("progressBar").value = Math.round(progress);
+      document.getElementById("loaded_n_total").innerHTML = Math.round(progress) + "% uploaded...please wait ";
+      switch (snapshot.state) {
+        case firebase.storage.TaskState.PAUSED: // or 'paused'
+          console.log('Upload is paused');
+          break;
+        case firebase.storage.TaskState.RUNNING: // or 'running'
+          console.log('Upload is running');
+          break;
+      }
+    }, function(error) {
+      // Handle unsuccessful uploads
+    }, function() {
+      // Handle successful uploads on complete
+      // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+    });
   }
+
 
   const errorMsgElement = document.querySelector('span#errorMsg');
 </script>

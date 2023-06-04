@@ -73,7 +73,6 @@
         });
     }
 
-
     const errorMsgElement = document.querySelector('span#errorMsg');
 </script>
 
