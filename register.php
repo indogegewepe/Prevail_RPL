@@ -7,21 +7,7 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $username = $_POST['username'];
     $password = $_POST['password'];
-
-    // if (register_cek_email($email)) {
-    //     if (!empty(trim($name)) && !empty(trim($password)) && !empty(trim($email)) && !empty(trim($username))) {
-    //         if (register_user($name, $email, $username, $password)) {
-    //             echo "Successfully registered";
-    //         } else {
-    //             echo "Something went wrong";
-    //         }
-    //     } else {
-    //         echo "Sorry it can't be empty";
-    //     }
-    // } else {
-    //     echo "email sudah terdaftar";
-    // }
-
+    
     $insert = $db->insert("customer", [
         'email' => $email,
         'nama' => $name,

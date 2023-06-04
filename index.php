@@ -7,5 +7,5 @@ if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
 	$uri = 'http://';
 }
 $uri .= $_SERVER['HTTP_HOST'];
-header('Location: ' . $uri . '/Project_RPL/Prevail_RPL/dashboard.php');
+header('Location: dashboard.php');
 exit;

@@ -47,7 +47,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="history.php">
                         <i class="uil uil-history"></i>
                         <span class="link-name">History</span>
                     </a>
