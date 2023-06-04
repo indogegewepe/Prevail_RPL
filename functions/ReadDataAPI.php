@@ -90,6 +90,23 @@ class firebaseRDB
         $grab = $this->grab($path, "DELETE");
         return $grab;
     }
+
+    public function retrieve($dbPath, $queryKey=null, $queryType=null, $queryVal =null){
+        if(isset($queryType) && isset($queryKey) && isset($queryVal)){
+           $queryVal = urlencode($queryVal);
+           if($queryType == "EQUAL"){
+                 $pars = "orderBy=\"$queryKey\"&equalTo=\"$queryVal\"";
+           }elseif($queryType == "LIKE"){
+                 $pars = "orderBy=\"$queryKey\"&startAt=\"$queryVal\"";
+           }
+        }
+        $pars = isset($pars) ? "?$pars" : "";
+        $path = $this->url."/$dbPath.json$pars";
+        $grab = $this->grab($path, "GET");
+        return $grab;
+     }
 }
+
+
 
 ?>
