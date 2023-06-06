@@ -13,6 +13,5 @@ https://restapiprevail-default-rtdb.firebaseio.com/customer.json
 https://restapiprevail-default-rtdb.firebaseio.com/status.json
 ### transaksi
 https://restapiprevail-default-rtdb.firebaseio.com/transaksi.json
-
-### UI
+### User Interface
 https://www.figma.com/file/6V1NubnP0yMtCy5qiOafsd/project?type=design&node-id=0%3A1&t=vE9kCMBHWPki8HaQ-1
