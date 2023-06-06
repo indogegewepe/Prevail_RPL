@@ -9,6 +9,7 @@
             margin-left: 450px;
         }
     </style>
+    <script src="/mine/functions/script.js"></script>
 </head>
 
 <body>

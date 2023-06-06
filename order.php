@@ -46,12 +46,9 @@ if (isset($_POST['submit'])) {
             </div>
 
             <div class="input-field" id="khas">
-              <div class="mb-3">
-                <input type="file" id="photo formFile" class="form-control upload" onchange="uploadImage()" accept="image/jpeg, image/png" name="uploadDokumen" required>
-                <progress id="progressBar" value="0" max="100" class="progress-bar progress-bar-striped progress-bar-animated"></progress>
-                <h3 id="status"></h3>
-                <p id="loaded_n_total"></p>
-              </div>
+              <label id="status"></label>
+              <progress style="margin-bottom: 6px;" class="progress-bar" id="progressBar" value="0" max="100"></progress>
+              <input style="width: -webkit-fill-available;" type="file" id="photo" onchange="uploadImage()" accept="image/jpeg, image/png" name="uploadDokumen" />
             </div>
           </div>
         </div>
@@ -123,6 +120,7 @@ if (isset($_POST['submit'])) {
 
 <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/7.7.0/firebase-storage.js"></script>
+
 <script>
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   const firebaseConfig = {
@@ -143,14 +141,14 @@ if (isset($_POST['submit'])) {
   function uploadImage() {
     const ref = firebase.storage().ref("dokumen_pelanggan/");
     const file = document.querySelector("#photo").files[0];
-    const name = file.name;
+    const name = "<?= $_SESSION['user'] ?>-" + file.name;
     const metadata = {
       contentType: "image/jpeg"
     };
     const task = ref.child(name).put(file, metadata);
     task
       .then(function(snapshot) {
-        document.getElementById("loaded_n_total").innerHTML = "";
+        document.getElementById("progressBar").style.display = "none";
         document.getElementById("status").innerHTML = "Uploaded";
         var url = snapshot.ref.getDownloadURL();
       });
@@ -160,7 +158,7 @@ if (isset($_POST['submit'])) {
       // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
       var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       document.getElementById("progressBar").value = Math.round(progress);
-      document.getElementById("loaded_n_total").innerHTML = Math.round(progress) + "% uploaded...please wait ";
+      // document.getElementById("loaded_n_total").innerHTML = Math.round(progress) + "% uploaded...please wait ";
       switch (snapshot.state) {
         case firebase.storage.TaskState.PAUSED: // or 'paused'
           console.log('Upload is paused');
@@ -176,7 +174,6 @@ if (isset($_POST['submit'])) {
       // For instance, get the download URL: https://firebasestorage.googleapis.com/...
     });
   }
-
 
   const errorMsgElement = document.querySelector('span#errorMsg');
 </script>
