@@ -16,6 +16,7 @@ if (isset($_POST['submit'])) {
     'jumlah' => $jumlah,
     'uploadDokumen' => $uploadDokumen,
     'nama' => $nama,
+    'harga' => 30000,
     'timestamp' => date_format($date, "H:i:s, d-m-Y")
   ]);
 }
@@ -76,31 +77,37 @@ if (isset($_POST['submit'])) {
         <h1 class="modal-title fs-5" id="exampleModalLabel">Checkout Barang</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      
       <div class="modal-body">
         <table class="table table-hover w-50 m-auto mt-5">
           <thead>
             <tr class="table table-light">
               <th scope="col">Produk</th>
-              <th scope="col">Harga Satuan</th>
               <th scope="col">Kuantitas</th>
               <th scope="col">Total Harga</th>
               <th scope="col">Aksi</th>
             </tr>
           </thead>
           <tbody>
+            <?php foreach ($data4 as $key => $value) :
+                if ($key == "temp_cart " . $_SESSION['user']) {
+                  foreach ($value as $row) : ?>
+                    <tr>
+                      <?php if ($layanan["namaLayanan"] = $row["namaLayanan"]) {
+                        $namaLayanan = $layanan["namaLayanan"];
+                      }
+                      ?>
+                      <td><?= $namaLayanan ?></td>
+                      <td>
+                        <p><?= $row["jumlah"] ?></p>
+                      </td>
+                      <td><?= $row["jumlah"] * $row["harga"] ?></td>
 
-            <?php foreach ($data4 as $row) : ?>
-              <tr>
-                <th><?= $row["namaLayanan"]  ?></th>
-                <td><?= $row["harga"]  ?></td>
-                <td>
-                  <p><?= $row["jumlah"] ?></p>
-                </td>
-                <td><?= $row["harga"] / $row["jumlah"] ?></td>
-                <td><button class="btn btn-danger">hapus</button></td>
-              </tr>
-            <?php endforeach; ?>
+                      <td><button class="btn btn-danger">hapus</button></td>
+                    </tr>
+            <?php
+                  endforeach;
+                }
+              endforeach; ?>
 
           </tbody>
         </table>
