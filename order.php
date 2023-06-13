@@ -8,7 +8,7 @@ if (isset($_POST['submit'])) {
   $db = new firebaseRDB($databaseURL);
   $namaLayanan = $_POST['namaLayanan'];
   $jumlah = $_POST['jumlah'];
-  $uploadDokumen = $_POST['uploadDokumen'];
+  $uploadDokumen = $_SESSION['user'] . "_" . date_format($date, "H:i:s, d-m-Y");
   $nama = $_SESSION['user'];
 
   $insert = $db->insert("temp/temp_cart " . $_SESSION['user'], [
@@ -139,9 +139,9 @@ if (isset($_POST['submit'])) {
   console.log(firebase);
 
   function uploadImage() {
-    const ref = firebase.storage().ref("dokumen_pelanggan/");
+    const ref = firebase.storage().ref("dokumen_pelanggan/<?= $_SESSION['user'] ?>");
     const file = document.querySelector("#photo").files[0];
-    const name = "<?= $_SESSION['user'] ?>-" + file.name;
+    const name = "<?= $_SESSION['user'] . "_" . date_format($date, "H:i:s, d-m-Y")?>";
     const metadata = {
       contentType: "image/jpeg"
     };
