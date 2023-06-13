@@ -76,6 +76,7 @@ if (isset($_POST['submit'])) {
         <h1 class="modal-title fs-5" id="exampleModalLabel">Checkout Barang</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      
       <div class="modal-body">
         <table class="table table-hover w-50 m-auto mt-5">
           <thead>
@@ -89,25 +90,22 @@ if (isset($_POST['submit'])) {
           </thead>
           <tbody>
 
-            <?php for ($i = 0; $i < 3; $i++) : ?>
+            <?php foreach ($data4 as $row) : ?>
               <tr>
-                <th scope="row">Brosur</th>
-                <td>Rp.6000</td>
+                <th><?= $row["namaLayanan"]  ?></th>
+                <td><?= $row["harga"]  ?></td>
                 <td>
-                  <center>
-                    <p>6</p>
-                  </center>
+                  <p><?= $row["jumlah"] ?></p>
                 </td>
-                <td>Rp.30000</td>
+                <td><?= $row["harga"] / $row["jumlah"] ?></td>
                 <td><button class="btn btn-danger">hapus</button></td>
               </tr>
-            <?php endfor ?>
+            <?php endforeach; ?>
 
           </tbody>
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">pesan lagi</button>
         <button type="button" class="btn btn-primary">checkout</button>
       </div>
     </div>
