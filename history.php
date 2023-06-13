@@ -106,6 +106,3 @@ require_once "view/headeradmin.php";
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../js/script.js"></script>
 </body>
-
-</html>
->>>>>>> dd172712242f350d3c2ab1003511c5b0a5187ef0
