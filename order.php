@@ -53,15 +53,15 @@ if (isset($_POST['submit'])) {
           </div>
         </div>
 
-
         <!-- Button trigger modal -->
         <div class="form-group input-group mb-3" id="login-btn">
           <input type="submit" class="form-control btn btn-success" name="submit" id="upload" placeholder="SUBMIT">
         </div>
 
-        <!-- <input type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Keranjang
-        </input> -->
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Kera Njang
+        </button>
 
       </div>
     </form>
@@ -141,7 +141,7 @@ if (isset($_POST['submit'])) {
   function uploadImage() {
     const ref = firebase.storage().ref("dokumen_pelanggan/<?= $_SESSION['user'] ?>");
     const file = document.querySelector("#photo").files[0];
-    const name = "<?= $_SESSION['user'] . "_" . date_format($date, "H:i:s, d-m-Y")?>";
+    const name = "<?= $_SESSION['user'] . "_" . date_format($date, "H:i:s, d-m-Y") ?>";
     const metadata = {
       contentType: "image/jpeg"
     };
