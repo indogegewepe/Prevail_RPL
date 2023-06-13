@@ -7,7 +7,7 @@ require_once "view/headeradmin.php";
 
 <!-- Jarak -->
 <section class="dashboard">
-    <<<<<<< HEAD <div class="dash-content">
+    <div class="dash-content">
         <header style="font-size: 26px; font-weight: bold; color: blueviolet; ">Riwayat Pemesanan</header>
         <table class="table table-bordered table-hover mt-5 p-5">
             <thead class="text-center">
