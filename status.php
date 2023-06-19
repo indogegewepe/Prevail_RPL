@@ -7,7 +7,7 @@ require_once "view/headeradmin.php";
         <section class="dashboard">
             <div class="dash-content">
                 <header style="font-size: 26px; font-weight: bold; color: blueviolet; ">Status Pemesanan</header>
-                <table class="table table-bordered table-hover w-50 m-auto mt-5">
+                <table class="table table-bordered table-hover m-auto mt-5">
                     <thead>
                         <tr class="table-warning table-bordered">
                             <th scope="col">Jenis Barang</th>
@@ -27,18 +27,21 @@ require_once "view/headeradmin.php";
                             <th scope="row">Kalender</th>
                             <td>Rp.200000</td>
                             <td>Ovo</td>
-                            <td><div class="status">working</div></td>
+                            <td><div class="status-panding">panding</div></td>
                         </tr>
                         <tr>
                             <th scope="row">Kartu Nama</th>
                             <td>Rp.75000</td>
                             <td>Ovo</td>
-                            <td><div class="status">working</div></td>
+                            <td><div class="status-done">done</div></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="../js/script.js"></script>
+    </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../js/script.js"></script>
   </body>

@@ -87,6 +87,13 @@ class firebaseRDB
         return $grab;
     }
 
+    public function deleteOrder($table, $uniqueID)
+    {
+        $path = $this->url . "/temp/$table/$uniqueID.json";
+        $grab = $this->grab($path, "DELETE");
+        return $grab;
+    }
+
     public function delete($table, $uniqueID)
     {
         $path = $this->url . "/$table/$uniqueID.json";

@@ -745,6 +745,22 @@ section div .status {
   text-align: center;
 }
 
+section div .status-done {
+  background-color: rgb(30, 83, 197);
+  color: azure;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+section div .status-panding {
+  background-color: rgb(255, 0, 13);
+  color: azure;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
 progress {
   width: auto;
 }

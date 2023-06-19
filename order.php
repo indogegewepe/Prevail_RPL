@@ -19,6 +19,7 @@ if (isset($_POST['submit'])) {
     'harga' => 30000,
     'timestamp' => date_format($date, "H:i:s, d-m-Y")
   ]);
+  header("Location:order.php");
 }
 
 ?>
@@ -90,19 +91,14 @@ if (isset($_POST['submit'])) {
           <tbody>
             <?php foreach ($data4 as $key => $value) :
                 if ($key == "temp_cart " . $_SESSION['user']) {
-                  foreach ($value as $row) : ?>
+                  foreach ($value as $row => $row2) : ?>
                     <tr>
-                      <?php if ($layanan["namaLayanan"] = $row["namaLayanan"]) {
-                        $namaLayanan = $layanan["namaLayanan"];
-                      }
-                      ?>
-                      <td><?= $namaLayanan ?></td>
+                      <td><?= $row2["namaLayanan"] ?></td>
                       <td>
-                        <p><?= $row["jumlah"] ?></p>
+                        <p><?= $row2["jumlah"] ?></p>
                       </td>
-                      <td><?= $row["jumlah"] * $row["harga"] ?></td>
-
-                      <td><button class="btn btn-danger">hapus</button></td>
+                      <td><?= $row2["jumlah"] * $row2["harga"] ?></td>
+                      <td><a class="btn btn-danger" id="btn-hapus" href="deleteOrder.php?id=<?= $row ?>">hapus</a></td>
                     </tr>
             <?php
                   endforeach;
