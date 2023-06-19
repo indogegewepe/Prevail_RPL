@@ -109,7 +109,8 @@ if (isset($_POST['submit'])) {
         </table>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">checkout</button>
+        <a href="bayar.php" class="btn btn-primary">checkout</a>
+        <!-- <button type="button" class="btn btn-primary">checkout</button> -->
       </div>
     </div>
   </div>
