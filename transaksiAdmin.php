@@ -12,7 +12,7 @@
 <section class="dashboard">
     <div class="dash-content">
         <header style="font-size: 26px; font-weight: bold; color: blueviolet; ">Daftar Transaksi</header>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah">Tambah Data Transaksi</button>
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tambah">Tambah Data Transaksi</button> -->
         <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="tambah" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -21,8 +21,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group input-group mb-3">
-                        <input type="text" class="form-control" name="namaLayanan" id="namaLayanan" placeholder="Nama Layanan" required>
+                    <div class="input-field">
+                        <select name="namaLayanan" class="form-select" id="jenis_layanan" required>
+                            <?php foreach ($data1 as $row) : ?>
+                            <option value="<?= $row['namaLayanan'] ?>" id="namaLayanan"><?= $row['namaLayanan'] ?></option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                     <div class="form-group input-group mb-3">
                         <input type="number" class="form-control" name="hargaLayanan" id="hargaLayanan" placeholder="Harga Layanan" required>
@@ -65,19 +69,25 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="ubah">Ubah Layanan</h1>
+                    <h1 class="modal-title fs-5" id="ubah">Ubah Status</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group input-group mb-3">
-                        <input type="text" class="form-control" name="namaLayanan" id="namaLayanan" placeholder="Nama Layanan" required>
+                        <input type="text" class="form-control" name="namaLayanan" id="namaLayanan" placeholder="Nama Pelanggan" required>
                     </div>
                     <div class="form-group input-group mb-3">
-                        <input type="number" class="form-control" name="hargaLayanan" id="hargaLayanan" placeholder="Harga Layanan" required>
+                        <input type="number" class="form-control" name="hargaLayanan" id="hargaLayanan" placeholder="Nama Layanan" required>
+                    </div>
+                    <div class="form-group input-group mb-3">
+                        <input type="number" class="form-control" name="hargaLayanan" id="hargaLayanan" placeholder="Tanggal Layanan" required>
+                    </div>
+                    <div class="form-group input-group mb-3">
+                        <input type="number" class="form-control" name="hargaLayanan" id="hargaLayanan" placeholder="Status" required>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <a href="bayar.php" class="btn btn-primary">Simpan</a>
+                    <a href="#" class="btn btn-primary">Simpan</a>
                     <!-- <button type="button" class="btn btn-primary">checkout</button> -->
                 </div>
                 </div>
