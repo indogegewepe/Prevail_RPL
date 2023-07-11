@@ -45,7 +45,7 @@ if (!isset($_SESSION['user'])) {
               <a href="#">Layanan</span></a>
               <i class="fa fa-archive" style="color: white;"></i><br>
               <h2 href="#"><?php
-                            $x = 1;
+                            $x = 0;
                             foreach ($data1 as $row) :
                               $x++;
                             endforeach;

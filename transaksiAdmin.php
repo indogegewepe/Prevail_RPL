@@ -61,7 +61,7 @@ if (!isset($_SESSION['user'])) {
                             <td>3/1/2023</td>
                             <td><?= $row2["status"] ?></td>
                             <td>
-                                <center><a href="#" class="btn btn-primary"><i class="fa fa-pen" style="color: white;"></i></a></center>
+                                <center><a href="editTransaksi.php" class="btn btn-primary"><i class="fa fa-pen" style="color: white;"></i></a></center>
                             </td>
                             <option value="<?= $row['namaLayanan'] ?>" id="namaLayanan"><?= $row['namaLayanan'] ?></option>
                         </tr>
