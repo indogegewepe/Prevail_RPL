@@ -30,17 +30,22 @@ if (isset($_POST['submit'])) {
                 </tr>
             </thead>
             <tbody>
-                <?php for ($i = 1; $i <= 3; $i++) : ?>
-                    <tr nowrap>
-                        <th scope="row">Brosur</th>
-                        <td>Rp.100000</td>
-                        <td>Ovo</td>
-                        <td>
-                            <div class="status">working</div>
-                        </td>
-                        <td><button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">Testimoni</button></td>
-                    </tr>
-                <?php endfor ?>
+                <?php foreach ($data5 as $key => $value) :
+                    if ($key == "status " . $_SESSION['user']) {
+                        foreach ($value as $row => $row2) : ?>
+                            <tr>
+                                <td><?= $row2["namaLayanan"] ?></td>
+                                <td>
+                                    <p><?= $row2["harga"] ?></p>
+                                </td>
+                                <td><?= $row2["metode"] ?></td>
+                                <td class=status><?= $row2["status"] ?></td>
+                                <td><button type="button" class="btn btn-primary mx-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">Testimoni</button></td>
+                            </tr>
+                <?php
+                        endforeach;
+                    }
+                endforeach; ?>
             </tbody>
         </table>
     </div>
