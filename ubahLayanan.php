@@ -68,7 +68,7 @@ if (isset($_POST['submit'])) {
                             <p>Rp. <?= $row["harga"] ?></p>
                         </td>
                         <td>
-                            <p>Rp. <?= $row["minPembelian"] ?></p>
+                            <p> <?= $row["minPembelian"] ?> pcs</p>
                         </td>
                         <td>
                             <center><a href="editLayanan.php?id=<?= $key ?>" class="btn btn-primary"><i class="fa fa-pen" style="color: white;"></i></a></center>
