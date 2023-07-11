@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     'harga' => 30000,
     'timestamp' => date_format($date, "H:i:s, d-m-Y")
   ]);
-  header("Location:order.php");
+  return header("Location:order.php#keranjang");
 }
 
 ?>
@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 
             <div class="input-field">
               <label>Jumlah</label>
-              <input type="number" placeholder="Masukkan Jumlah" name="jumlah" required />
+              <input type="number" placeholder="Masukkan Jumlah" name="jumlah" required/>
             </div>
 
             <div class="input-field" id="khas">
@@ -61,8 +61,8 @@ if (isset($_POST['submit'])) {
         </div>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          Kera Njang
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="keranjang">
+          Keranjang
         </button>
 
       </div>
