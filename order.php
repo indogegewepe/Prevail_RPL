@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     'harga' => 30000,
     'timestamp' => date_format($date, "H:i:s, d-m-Y")
   ]);
-  header("Location:order.php");
+  header("Location:status.php");
 }
 
 ?>
@@ -104,7 +104,6 @@ if (isset($_POST['submit'])) {
                   endforeach;
                 }
               endforeach; ?>
-
           </tbody>
         </table>
       </div>
