@@ -1,11 +1,21 @@
 <?php
-    require_once "core/init.php";
+require_once "core/init.php";
+require_once "view/SideBarAdmin.php";
 
-    require_once "view/SideBarAdmin.php";
-
-    if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
     header('Location: login.php');
-    }
+}
+
+if (isset($_POST['submit'])) {
+    $db = new firebaseRDB($databaseURL);
+
+    $insert = $db->insert("layanan", [
+        'namaLayanan' => $_POST['namaLayanan'],
+        'harga' => $_POST['hargaLayanan'],
+        'minPembelian' => $_POST['minPembelian']
+    ]);
+    return header('Location: ubahLayanan.php');
+}
 
 ?>
 
@@ -16,22 +26,27 @@
         <div class="modal fade" id="tambah" tabindex="-1" aria-labelledby="tambah" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="tambah">Tambah Layanan</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group input-group mb-3">
-                        <input type="text" class="form-control" name="namaLayanan" id="namaLayanan" placeholder="Nama Layanan" required>
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="tambah">Tambah Layanan</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="form-group input-group mb-3">
-                        <input type="number" class="form-control" name="hargaLayanan" id="hargaLayanan" placeholder="Harga Layanan" required>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="bayar.php" class="btn btn-primary">Simpan</a>
-                    <!-- <button type="button" class="btn btn-primary">checkout</button> -->
-                </div>
+                    <form id="tambah" action="" method="post">
+                        <div class="modal-body">
+                            <div class="form-group input-group mb-3">
+                                <input type="text" class="form-control" name="namaLayanan" id="namaLayanan" placeholder="Nama Layanan" required>
+                            </div>
+                            <div class="form-group input-group mb-3">
+                                <input type="number" class="form-control" name="hargaLayanan" id="hargaLayanan" placeholder="Harga Layanan" required>
+                            </div>
+                            <div class="form-group input-group mb-3">
+                                <input type="number" class="form-control" name="minPembelian" id="minPembelian" placeholder="Minimal Pembelian" required>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button name="submit" class="btn btn-primary" type="submit">Simpan</button>
+                            <!-- <button type="button" class="btn btn-primary">checkout</button> -->
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -45,20 +60,27 @@
                 </tr>
             </thead>
             <tbody>
-                <?php for ($i = 1; $i <= 3; $i++) : ?>
-                    <tr nowrap>
-                        <th scope="row">Brosur</th>
-                        <td>Rp.100000</td>
-                        <td><center><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ubah"><i class="fa fa-pen" style="color: white;" ></i></button></center></td>
-                        <td><center><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus"><i class="fa fa-trash" style="color: white;"></i></button></center></td>
+                <?php foreach ($data1 as $row) : ?>
+                    <tr>
+                        <td><?= $row["namaLayanan"] ?></td>
+                        <td>
+                            <p>Rp. <?= $row["harga"] ?></p>
+                        </td>
+                        <td>
+                            <center><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ubah"><i class="fa fa-pen" style="color: white;"></i></button></center>
+                        </td>
+                        <td>
+                            <center><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#hapus"><i class="fa fa-trash" style="color: white;"></i></button></center>
+                        </td>
                     </tr>
-                <?php endfor ?>
+                <?php
+                endforeach; ?>
             </tbody>
         </table>
     </div>
-        <div class="modal fade" id="ubah" tabindex="-1" aria-labelledby="ubah" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+    <div class="modal fade" id="ubah" tabindex="-1" aria-labelledby="ubah" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="ubah">Ubah Layanan</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -75,12 +97,12 @@
                     <a href="bayar.php" class="btn btn-primary">Simpan</a>
                     <!-- <button type="button" class="btn btn-primary">checkout</button> -->
                 </div>
-                </div>
             </div>
         </div>
-        <div class="modal fade" id="hapus" tabindex="-1" aria-labelledby="hapus" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
+    </div>
+    <div class="modal fade" id="hapus" tabindex="-1" aria-labelledby="hapus" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="hapus">Ubah Layanan</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -97,7 +119,7 @@
                     <center>
                         <button class="btn btn-danger">Ya</button>
                         <button class="btn btn-primary">Tidak</button>
-                    </center> 
+                    </center>
                     <!-- <a href="bayar.php" class="btn btn-primary">Simpan</a> -->
                     <!-- <button type="button" class="btn btn-primary">checkout</button> -->
                 </div>
