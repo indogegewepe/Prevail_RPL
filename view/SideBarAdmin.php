@@ -29,27 +29,21 @@
         <div class="menu-items">
             <ul class="nav-links">
                 <li>
-                    <a href="dashboard.php">
+                    <a href="dashboardAdmin.php">
                         <i class="uil uil-create-dashboard"></i>
+                        <span class="link-name">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ubahLayanan.php">
+                        <i class="uil uil-files-landscapes"></i>
                         <span class="link-name">Layanan</span>
                     </a>
                 </li>
                 <li>
-                    <a href="order.php">
-                        <i class="uil uil-files-landscapes"></i>
-                        <span class="link-name">Order</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="status.php">
+                    <a href="transaksiAdmin.php">
                         <i class="uil uil-chart"></i>
-                        <span class="link-name">Status</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="history.php">
-                        <i class="uil uil-history"></i>
-                        <span class="link-name">History</span>
+                        <span class="link-name">Transaksi</span>
                     </a>
                 </li>
             </ul>

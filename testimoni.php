@@ -5,33 +5,33 @@ require_once "view/header.php";
 
 $i = 0;
 
-$tbl_testimoni = mysqli_query($conn, "SELECT customer.idCustomer, testimoni.kalimat, customer.name FROM testimoni INNER JOIN customer ON testimoni.idCustomer = customer.idCustomer ORDER BY id_testimoni DESC");
 ?>
 
-
-        <div class="col mt-3" id="testimonial">
-            <div class="row">
-                <div class="testimonial">
-                    <?php while ($i < 3) { ?>
-                        <div class="card my-4">
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="card-body">
-                                        <?php $testimoni = mysqli_fetch_assoc($tbl_testimoni) ?>
-                                        <h5 class="card-title-b"> <?= $testimoni["name"]  ?></h5>
-                                        <p class="card-text">
-                                            <?= $testimoni["kalimat"] ?>
-                                        </p>
-                                    </div>
+<div class="col mt-3" id="testimonial">
+    <div class="row">
+        <div class="testimonial">
+            <?php $data2 = array_reverse($data2);
+            foreach ($data2 as $row) :
+                if ($i < 3) { ?>
+                    <div class="card my-4">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title-b"> <?= $row["nama"]  ?></h5>
+                                    <p class="card-text">
+                                        <?= $row["kalimat"] ?>
+                                    </p>
                                 </div>
                             </div>
                         </div>
-                    <?php $i++; } ?>
-                </div>
-            </div>
+                    </div>
+            <?php $i++;
+                }
+            endforeach; ?>
         </div>
     </div>
 </div>
+
 <!-- Option 1: Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
