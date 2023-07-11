@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
     'harga' => 30000,
     'timestamp' => date_format($date, "H:i:s, d-m-Y")
   ]);
-  return header("Location:order.php#keranjang");
+  return header("Location:order.php");
 }
 
 ?>

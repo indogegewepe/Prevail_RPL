@@ -1,6 +1,8 @@
 <?php
 require_once "core/init.php";
 require_once "view/headeradmin.php";
+
+$date = date_create("Asia/Jakarta");
 $db = new firebaseRDB($databaseURL);
 
 if (isset($_POST['submit'])) {
@@ -12,6 +14,7 @@ if (isset($_POST['submit'])) {
                     'namaLayanan' => $row2["namaLayanan"],
                     'harga' => $total,
                     'metode' => $_POST['metod'],
+                    'timestamp' => date_format($date, "d-m-Y"),
                     'status' => "pending"
                 ]);
             endforeach;

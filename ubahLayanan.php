@@ -56,6 +56,7 @@ if (isset($_POST['submit'])) {
                     <!-- <th scope="col" style="width: 30%;">Foto</th> -->
                     <th scope="col" style="width: 20%;">Nama</th>
                     <th scope="col" style="width: 20%;">Harga</th>
+                    <th scope="col" style="width: 20%;">Minimal</th>
                     <th scope="col" style="width: 15%;" colspan="2">Aksi</th>
                 </tr>
             </thead>
@@ -65,6 +66,9 @@ if (isset($_POST['submit'])) {
                         <td><?= $row["namaLayanan"] ?></td>
                         <td>
                             <p>Rp. <?= $row["harga"] ?></p>
+                        </td>
+                        <td>
+                            <p>Rp. <?= $row["minPembelian"] ?></p>
                         </td>
                         <td>
                             <center><a href="editLayanan.php?id=<?= $key ?>" class="btn btn-primary"><i class="fa fa-pen" style="color: white;"></i></a></center>
